@@ -42,13 +42,26 @@ AOBJS = $(ASRCS:.S=$(OBJEXT))
 
 CSRCS = sam_boot.c
 
+ifeq ($(CONFIG_HAVE_CXXINITIALIZE),y)
+CSRCS += sam_cxxinitialize.c
+endif
+
+ifeq ($(CONFIG_NSH_ARCHINIT),y)
+CSRCS += sam_nsh.c
+endif
+
+ifeq ($(CONFIG_SAM34_HSMCI),y)
+CSRCS += sam_hsmci.c
+endif
+
+ifeq ($(CONFIG_SAM34_UDP),y)
+CSRCS += sam_udp.c
+endif
+
 ifeq ($(CONFIG_SAM34_EXTSRAM0),y)
 CSRCS += sam_sram.c
 endif
 
-ifeq ($(CONFIG_HAVE_CXX),y)
-CSRCS += sam_cxxinitialize.c
-endif
 
 ifeq ($(CONFIG_ARCH_LEDS),y)
 CSRCS += sam_autoleds.c
@@ -58,6 +71,14 @@ endif
 
 ifeq ($(CONFIG_ARCH_BUTTONS),y)
 CSRCS += sam_buttons.c
+endif
+
+ifeq ($(CONFIG_SAM34_WDT),y)
+CSRCS += sam_wdt.c
+endif
+
+ifeq ($(CONFIG_TIMER),y)
+CSRCS += sam_tc.c
 endif
 
 COBJS = $(CSRCS:.c=$(OBJEXT))

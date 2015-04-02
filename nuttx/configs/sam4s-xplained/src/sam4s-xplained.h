@@ -53,6 +53,32 @@
 /************************************************************************************
  * Pre-processor Definitions
  ************************************************************************************/
+/* Configuration ********************************************************************/
+
+#define HAVE_HSMCI      1
+#define HAVE_PROC       1
+#define HAVE_USBDEV     1
+#undef  HAVE_USBMONITOR
+
+/* USB Device */
+/* CONFIG_SAM34_UDP and CONFIG_USBDEV must be defined, or there is no USB
+ * device.
+ */
+
+#if !defined(CONFIG_SAM34_UDP) || !defined(CONFIG_USBDEV) ||!defined(CONFIG_CDCACM)
+#  undef HAVE_USBDEV
+#endif
+
+/* Check if we should enable the USB monitor before starting NSH */
+
+#ifndef HAVE_USBDEV
+#  undef CONFIG_USBDEV_TRACE
+#endif
+
+#if !defined(CONFIG_SYSTEM_USBMONITOR) && !defined(CONFIG_USBDEV_TRACE)
+#  undef HAVE_USBMONITOR
+#endif
+
 /* There are four LEDs on board the SAM4S Xplained board, two of these can be
  * controlled by software in the SAM4S:
  *
@@ -135,6 +161,19 @@
 void sam_sram_initialize(void);
 #endif
 
+/************************************************************************************
+ * Name: sam_timerinitialize()
+ *
+ * Description:
+ *   Perform architecture-specific initialization of the timer hardware.
+ *
+ ************************************************************************************/
+
+#ifdef CONFIG_TIMER
+int sam_timerinitialize(void);
+#else
+#  define sam_timerinitialize() (0)
+#endif
+
 #endif /* __ASSEMBLY__ */
 #endif /* __CONFIGS_SAM4S_XPLAINED_SRC_SAM4S_XPLAINED_H */
-
