@@ -1,0 +1,38 @@
+diff --git a/nuttx/ChangeLog b/nuttx/ChangeLog
+index b640b22..e69d630 100755
+--- a/nuttx/ChangeLog
++++ b/nuttx/ChangeLog
+@@ -10159,3 +10159,7 @@
+ 	* apps/netutils/pppd/Kconfig, pppd.c, and ntpv3.h (removed):  Remove
+ 	  ntpclient header file in and NTP client references from the pppd
+ 	  dir.  From Brennan Ashton (2015-04-13).
++	* configs/galileo: Remove all references to the Galileo board.  That
++	  port is not going to happen (I don't even have the hardware anymore)
++	  (2015-04-13).
++
+diff --git a/nuttx/Documentation/README.html b/nuttx/Documentation/README.html
+index 02552d6..cb881e3 100644
+--- a/nuttx/Documentation/README.html
++++ b/nuttx/Documentation/README.html
+@@ -98,8 +98,6 @@
+  |   |   |   `- <a href="http://sourceforge.net/p/nuttx/git/ci/master/tree/nuttx/configs/ez80f910200zco/README.txt"><b><i>README.txt</i></b></a>
+  |   |   |- fire-stm32v2/
+  |   |   |   `- <a href="http://sourceforge.net/p/nuttx/git/ci/master/tree/nuttx/configs/fire-stm32v2/README.txt"><b><i>README.txt</i></b></a>
+- |   |   |- galileo/
+- |   |   |   `- <a href="http://sourceforge.net/p/nuttx/git/ci/master/tree/nuttx/configs/galileo/README.txt"><b><i>README.txt</i></b></a>
+  |   |   |- freedom-kl25z/
+  |   |   |   `- <a href="http://sourceforge.net/p/nuttx/git/ci/master/tree/nuttx/configs/freedom-kl25z/README.txt"><b><i>README.txt</i></b></a>
+  |   |   |- freedom-kl26z/
+diff --git a/nuttx/README.txt b/nuttx/README.txt
+index ed551a4..ad539bf 100644
+--- a/nuttx/README.txt
++++ b/nuttx/README.txt
+@@ -1160,8 +1160,6 @@ nuttx
+  |   |   `- README.txt
+  |   |- freedom-kl26z/
+  |   |   `- README.txt
+- |   |- galileo/
+- |   |   `- README.txt
+  |   |- hymini-stm32v/
+  |   |   `- README.txt
+  |   |- kwikstik-k40/
