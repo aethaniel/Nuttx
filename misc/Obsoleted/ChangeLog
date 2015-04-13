@@ -65,3 +65,16 @@ ChangeLog
 
   REMOVAL PATCH
     misc/Obsoleted/Patches/Remove-stm32f100rc_generic-2014-11-10.patch
+
+2015-04-13: Remove fragmentary support for the Intel Galileo bord.
+
+  REASON
+    That port is not going to happen (I don't even have the Galileo
+    board anymore).
+
+  NEW HOME
+    misc/Obsoleted/configs/galileo
+
+  REMOVAL PATH
+     misc/Obsoleted/Patches/Remove-Galileo-2015-04-13.patch
+
