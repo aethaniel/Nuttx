@@ -1,7 +1,7 @@
 /************************************************************************************
- * configs/stm32f4discovery/src/stm32_cxxinitialize.c
+ * apps/platform/stm32f4discovery/src/stm32_cxxinitialize.c
  *
- *   Copyright (C) 2012 Gregory Nutt. All rights reserved.
+ *   Copyright (C) 2012, 2015 Gregory Nutt. All rights reserved.
  *   Author: Gregory Nutt <gnutt@nuttx.org>
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,9 +42,6 @@
 #include <debug.h>
 
 #include <nuttx/arch.h>
-
-#include <arch/stm32/chip.h>
-#include "chip.h"
 
 #if defined(CONFIG_HAVE_CXX) && defined(CONFIG_HAVE_CXXINITIALIZE)
 
@@ -118,7 +115,7 @@ extern uint32_t _etext;
  *   This function should then be called in the application-specific
  *   user_start logic in order to perform the C++ initialization.  NOTE
  *   that no component of the core NuttX RTOS logic is involved; This
- *   function defintion only provides the 'contract' between application
+ *   function definition only provides the 'contract' between application
  *   specific C++ code and platform-specific toolchain support
  *
  ***************************************************************************/
@@ -130,7 +127,7 @@ void up_cxxinitialize(void)
   cxxdbg("_sinit: %p _einit: %p _stext: %p _etext: %p\n",
          &_sinit, &_einit, &_stext, &_etext);
 
-  /* Visit each entry in the initialzation table */
+  /* Visit each entry in the initialization table */
 
   for (initp = &_sinit; initp != &_einit; initp++)
     {
@@ -151,4 +148,3 @@ void up_cxxinitialize(void)
 }
 
 #endif /* CONFIG_HAVE_CXX && CONFIG_HAVE_CXXINITIALIZE */
-
